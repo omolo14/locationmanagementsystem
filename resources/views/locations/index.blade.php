@@ -56,6 +56,7 @@
                                                 </td>
                                             </tr> 
                                         @endforeach 
+
                                     </tbody>
                                 </table>
                             </div>
@@ -65,4 +66,32 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('js')
+<script>
+    $(document).ready(function(){
+        // var table = $("#location-datatable").DataTable({
+        //     // lengthChange: !1,
+        //     dom: 'Bfrtip',
+        //     buttons: ["copy", "excel", "pdf"],
+        //     // language: {
+        //     //     paginate: {
+        //     //         previous: "<i class='mdi mdi-chevron-left'>",
+        //     //         next: "<i class='mdi mdi-chevron-right'>"
+        //     //     }
+        //     // },
+        //     // drawCallback: function() {
+        //     //     $(".dataTables_paginate > .pagination").addClass("pagination-rounded")
+        //     // },
+        //     // initComplete: function(settings, json){
+        //     //     // console.log(this.buttons())
+        //     // }
+        // });
+        
+
+        // table.buttons().container().appendTo("#datatable-buttons_wrapper .col-md-6:eq(0)");
+        // $(".dataTables_length select").addClass("form-select form-select-sm");
+    });
+</script>
 @endsection
