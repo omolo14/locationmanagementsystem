@@ -11,7 +11,7 @@ class DashboardController extends Controller
     public function dashboard()
     {
         $locations = Location::count();
-        $parentlocations = Location::where('parent_id',0)->count();
+        $parentlocations = Location::whereNotNull('parent_id')->pluck('parent_id')->unique()->count();
         $childlocations = Location::whereNotNull('parent_id')->count();
 
         $data = [
