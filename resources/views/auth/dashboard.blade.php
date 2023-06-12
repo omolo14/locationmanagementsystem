@@ -54,6 +54,7 @@
                                         <div class="flex-grow-1">
                                             <p class="text-truncate font-size-14 mb-2">Parent Locations</p>
                                             <h4 class="mb-2">{{$parentlocations}}</h4>
+
                                             
                                         </div>
                                         <div class="avatar-sm">
