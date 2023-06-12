@@ -2,7 +2,6 @@
 
 @section('content')
 <body data-topbar="dark">
-    
     <!-- Begin page -->
     <div id="layout-wrapper">
 
