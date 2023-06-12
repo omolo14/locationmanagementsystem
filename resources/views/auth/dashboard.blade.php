@@ -35,7 +35,7 @@
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
                                             <p class="text-truncate font-size-14 mb-2">Locations</p>
-                                            <h4 class="mb-2">{{$locations}}</h4>
+                                            <h4 class="mb-2">{{ isset($locations) ? $locations : '' }}</h4>
                                         </div>
                                         <div class="avatar-sm">
                                             <span class="avatar-title bg-light text-primary rounded-3">
@@ -52,7 +52,7 @@
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
                                             <p class="text-truncate font-size-14 mb-2">Parent Locations</p>
-                                            <h4 class="mb-2">{{$parentlocations}}</h4>
+                                            <h4 class="mb-2">{{ isset($parentlocations) ? $parentlocations : '' }}</h4>
                                         </div>
                                         <div class="avatar-sm">
                                             <span class="avatar-title bg-light text-success rounded-3">
@@ -69,7 +69,7 @@
                                     <div class="d-flex">
                                         <div class="flex-grow-1">
                                             <p class="text-truncate font-size-14 mb-2">Child Locations</p>
-                                            <h4 class="mb-2">{{$childlocations}}</h4>
+                                            <h4 class="mb-2">{{ isset($childlocations) ? $childlocations : '' }}</h4>
                                         </div>
                                         <div class="avatar-sm">
                                             <span class="avatar-title bg-light text-primary rounded-3">
