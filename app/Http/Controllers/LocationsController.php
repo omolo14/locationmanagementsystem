@@ -76,14 +76,34 @@ class LocationsController extends Controller
 
         return redirect()->route('locations.index')->with('success', 'Location deleted successfully.');
     }
+
+    // public function destroy(Location $location)
+    // {
+    //     // Check if the location has any child locations
+    //     if ($location->childlocation > 0) {
+    //         // return Redirect::back()->withErrors('Cannot delete this location. Child location(s) exist.');
+    //         redirect()->route('locations.index')->withErrors('Cannot delete this location. Child location(s) exist.');
+    //     }
+    //     else{
+    //         $location->record=0;
+    //         $location->save();
+
+    //     return redirect()->route('locations.index')->with('success', 'Location deleted successfully.');
+    //     }
+    //     // Delete the location if no child locations exist
+        
+    // }
   
     public function show($id)
     {
         $location = Location::findOrFail($id);
         $childlocations = Location::where('parent_id', $id)->get();
+        $parentlocation = $location->parent;
+        $categories = Location::with('children')->where('parent_id', null)->get();
+        // $parentlocations = Location::where('id', $id)->get();
         // dd( $childlocations);
 
-        return view('locations.show', compact('location', 'childlocations'));
+        return view('locations.show', compact('location', 'childlocations', 'parentlocation', 'categories'));
     }
 
     
