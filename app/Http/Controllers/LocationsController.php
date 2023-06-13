@@ -24,7 +24,7 @@ class LocationsController extends Controller
     }
 
     public function store(Request $request)
-{
+    {
     $validatedData = $request->validate([
         'name' => 'required|string|max:255',
         'status' => 'required|in:completed,incomplete',
@@ -39,12 +39,9 @@ class LocationsController extends Controller
     $location->updatedby = "boaz";
     $location->save();
     return redirect()->route('locations.index')->with('success', 'Location created successfully.');
-}
-
-    public function show(Location $location)
-    {
-        return view('locations.show', compact('location'));
     }
+
+  
 
     public function edit(Location $location)
     {
@@ -78,6 +75,15 @@ class LocationsController extends Controller
         
 
         return redirect()->route('locations.index')->with('success', 'Location deleted successfully.');
+    }
+  
+    public function show($id)
+    {
+        $location = Location::findOrFail($id);
+        $childlocations = Location::where('parent_id', $id)->get();
+        // dd( $childlocations);
+
+        return view('locations.show', compact('location', 'childlocations'));
     }
 
     
