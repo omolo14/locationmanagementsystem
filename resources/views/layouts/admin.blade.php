@@ -184,8 +184,15 @@
                                 </a>
                             </li>
 
-
                             <li>
+                                <a href="{{ route('locations.index') }}" class="waves-effect">
+                                    <i class="ri-dashboard-line"></i>
+                                    <span>Locations</span>
+                                </a>
+                            </li>
+
+
+                            {{-- <li>
                                 <a href="javascript: void(0);" class="has-arrow waves-effect">
                                     <i class="ri-table-2"></i>
                                     <span>View Locations</span>
@@ -194,7 +201,7 @@
                                    
                                     <li><a href="{{ route('locations.index') }}">Locations</a></li>
                                 </ul>
-                            </li>   
+                            </li>    --}}
                         </ul>
                     </div>
                     <!-- Sidebar -->
