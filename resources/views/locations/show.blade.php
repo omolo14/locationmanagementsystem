@@ -31,19 +31,50 @@
                         <p class="card-text">Parent Location: {{ $location->parent ? $location->parent->name : 'N/A' }}</p>
                     </div>
                 </div>
-                
+
                 @if ($location->parent)
                     <h1>Parent Location Details</h1>
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="card-text">Name: {{ $location->parent->name }}</p>
-                            <p class="card-text">Status: {{ ucfirst($location->parent->status) }}</p>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                                        <thead>
+                                            <tr>
+                                                <th>Level</th>
+                                                <th>Name</th>
+                                                <th>Status</th>
+                                                <th>Parent Location</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @php
+                                                $level = 1;
+                                                $currentLocation = $location->parent;
+                                            @endphp
+                                            @while ($currentLocation)
+                                                <tr>
+                                                    <td>{{ $level }}</td>
+                                                    <td>{{ $currentLocation->name }}</td>
+                                                    <td>{{ ucfirst($currentLocation->status) }}</td>
+                                                    <td>{{ $currentLocation->parent ? $currentLocation->parent->name : 'N/A' }}</td>
+                                                </tr>
+                                                @php
+                                                    $level++;
+                                                    $currentLocation = $currentLocation->parent;
+                                                @endphp
+                                            @endwhile
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 @endif
-                
+
+
+                <h1>Child Locations</h1>
                 <div class="row">
-                    <h1>Child Locations</h1>
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
