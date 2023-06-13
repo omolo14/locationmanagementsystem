@@ -78,8 +78,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <table id="alternative-page-datatable" class="table dt-responsive nowrap w-100">
-                                {{-- <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;"> --}}
+                                <table id="key-datatable" class="table dt-responsive nowrap w-100">
                                     <thead>
                                         <tr>
                                             <th>#</th>
