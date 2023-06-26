@@ -43,7 +43,7 @@ class LocationsController extends Controller
         $location->updatedby = "";
         $location->save();
         return redirect()->route('locations.index')->with('success', 'Location created successfully.');
-        }
+    }
 
   
 
@@ -56,6 +56,8 @@ class LocationsController extends Controller
 
     public function update(Request $request, Location $location)
     {
+        $username = Auth::user()->name;
+
         $request->validate([
             'name' => 'required',
             'status' => 'required',
@@ -65,7 +67,11 @@ class LocationsController extends Controller
             'name' => $request->input('name'),
             'parent_id' => $request->input('parent_id'),
             'status' => $request->input('status'),
+            // 'updatedby' => $username,
         ]);
+
+        $location->updatedby = $username;
+        $location->save();
 
         return redirect()->route('locations.index')->with('success', 'Location updated successfully.');
     }
