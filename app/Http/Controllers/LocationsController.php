@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LocationsController extends Controller
 {
@@ -25,21 +26,24 @@ class LocationsController extends Controller
 
     public function store(Request $request)
     {
-    $validatedData = $request->validate([
-        'name' => 'required|string|max:255',
-        'status' => 'required|in:completed,incomplete',
-        'parent_id' => 'nullable|exists:locations,id'
-    ]);
-    $location = new Location();
-    $location->name = $request->input('name');
-    $location->status = $request->input('status');
-    $location->parent_id = $request->input('parent_id');
-    $location->record = 1;
-    $location->createdby = "boaz";
-    $location->updatedby = "boaz";
-    $location->save();
-    return redirect()->route('locations.index')->with('success', 'Location created successfully.');
-    }
+
+        $username = Auth::user()->name;
+
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'status' => 'required|in:completed,incomplete',
+            'parent_id' => 'nullable|exists:locations,id'
+        ]);
+        $location = new Location();
+        $location->name = $request->input('name');
+        $location->status = $request->input('status');
+        $location->parent_id = $request->input('parent_id');
+        $location->record = 1;
+        $location->createdby = $username;
+        $location->updatedby = "";
+        $location->save();
+        return redirect()->route('locations.index')->with('success', 'Location created successfully.');
+        }
 
   
 

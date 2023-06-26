@@ -2,6 +2,7 @@
 
 // use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LocationsController;
 use App\Http\Controllers\DashboardController;
 
